@@ -1,0 +1,35 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="container my-5">
+  <h2 class="mb-4 text-center text-primary fw-bold">My Bookings</h2>
+
+  <% if (bookings.length === 0) { %>
+    <div class="text-center mt-5">
+      <i class="fa fa-calendar-times fa-3x text-muted mb-3"></i>
+      <h5 class="text-muted">You haven’t made any bookings yet.</h5>
+    </div>
+  <% } else { %>
+    <div class="row g-4">
+      <% bookings.forEach(booking => { %>
+        <div class="col-md-6 col-lg-4">
+          <div class="card shadow-sm h-100 border-0">
+            <div class="card-body">
+              <h5 class="card-title text-danger fw-bold"><%= booking.listing.title %></h5>
+              <p class="card-text mb-2">
+                <i class="fa fa-calendar-check text-success me-1"></i>
+                <strong>From:</strong> <%= booking.fromDate.toDateString() %><br>
+                <i class="fa fa-calendar-alt text-warning me-1"></i>
+                <strong>To:</strong> <%= booking.toDate.toDateString() %><br>
+                <i class="fa fa-user-friends text-info me-1"></i>
+                <strong>Guests:</strong> <%= booking.guests %><br>
+                <i class="fa fa-rupee-sign text-secondary me-1"></i>
+                <strong>Total Price:</strong> ₹<%= booking.totalPrice %>
+              </p>
+              <a href="/listings/<%= booking.listing._id %>" class="btn btn-outline-primary btn-sm w-100 mt-2">View Listing</a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>

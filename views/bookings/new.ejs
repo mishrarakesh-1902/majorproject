@@ -1,0 +1,97 @@
+<!-- <% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+  <h2>Book <%= listing.title %></h2>
+
+  <form action="/listings/<%= listing._id %>/bookings/new" method="POST">
+    <div class="mb-3">
+      <label for="fromDate" class="form-label">From Date</label>
+      <input type="date" class="form-control" name="fromDate" required min="<%= new Date().toISOString().split('T')[0] %>">
+    </div>
+
+    <div class="mb-3">
+      <label for="toDate" class="form-label">To Date</label>
+      <input type="date" class="form-control" name="toDate" required min="<%= new Date().toISOString().split('T')[0] %>">
+    </div>
+
+    <div class="mb-3">
+      <label for="guests" class="form-label">Number of Guests</label>
+      <input type="number" class="form-control" name="guests" value="1" min="1">
+    </div>
+
+    <button class="btn btn-danger">Book Now</button>
+  </form>
+</div> -->
+
+
+<script>
+  function setToDateMin() {
+    const fromDateInput = document.getElementById("fromDate");
+    const toDateInput = document.getElementById("toDate");
+
+    fromDateInput.addEventListener("change", () => {
+      const fromDate = new Date(fromDateInput.value);
+      if (isNaN(fromDate)) return;
+
+      // Set minimum toDate = fromDate + 1 day
+      const nextDay = new Date(fromDate);
+      nextDay.setDate(nextDay.getDate() + 1);
+      const minToDate = nextDay.toISOString().split("T")[0];
+
+      toDateInput.min = minToDate;
+      toDateInput.value = ""; // Clear previously selected invalid date
+      toDateInput.setCustomValidity("Please select a date after the From Date");
+    });
+
+    toDateInput.addEventListener("input", () => {
+      const fromDate = new Date(fromDateInput.value);
+      const toDate = new Date(toDateInput.value);
+
+      if (toDate <= fromDate) {
+        toDateInput.setCustomValidity("To Date must be at least 1 day after From Date");
+      } else {
+        toDateInput.setCustomValidity(""); // Valid
+      }
+    });
+  }
+
+  window.onload = setToDateMin;
+</script>
+
+<form action="/listings/<%= listing._id %>/bookings/new" method="POST">
+  <div class="mb-3">
+    <label for="fromDate" class="form-label">From Date</label>
+    <input
+      type="date"
+      id="fromDate"
+      class="form-control"
+      name="fromDate"
+      required
+      min="<%= new Date().toISOString().split('T')[0] %>"
+    >
+  </div>
+
+  <div class="mb-3">
+    <label for="toDate" class="form-label">To Date</label>
+    <input
+      type="date"
+      id="toDate"
+      class="form-control"
+      name="toDate"
+      required
+    >
+  </div>
+
+  <div class="mb-3">
+    <label for="guests" class="form-label">Number of Guests</label>
+    <input
+      type="number"
+      class="form-control"
+      name="guests"
+      value="1"
+      min="1"
+    >
+  </div>
+
+  <button class="btn btn-danger">Book Now</button>
+</form>

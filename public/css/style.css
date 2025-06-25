@@ -207,7 +207,9 @@
     display: flex;
     align-items: center;
 } */
-
+.tax-info {
+    display: none;
+}
 
 .tax-toggle {
   margin-left: auto;

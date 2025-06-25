@@ -1,6 +1,6 @@
 <% layout("/layouts/boilerplate") %>
 
-<!-- Inject Mapbox token and coordinates -->
+
 <script>
     const mapToken = "<%= process.env.MAP_TOKEN %>"
     const coordinates = JSON.parse("<%- JSON.stringify(listing.geometry.coordinates) %>");    
@@ -31,10 +31,16 @@
         </form>
     </div>
     <% } %> 
-    
+
+    <% if (currUser && !listing.owner._id.equals(currUser._id)) { %>
+      <a href="/listings/<%= listing._id %>/bookings/new" class="btn btn-danger col-1 offset-3">Book This Place</a>
+    <% } %>
+
+
+
     <hr>
 
-    <!-- Map Section -->
+    
     <div class="col-6 offset-3 mb-3">
         <h3>Where you'll be</h3>
         <div id="map" style="height: 400px; width: 100%;"></div>
@@ -42,7 +48,7 @@
 </div>
 
 
-  <!-- Review Form -->
+
   <hr class="col-6 offset-3" />
   <% if (currUser) { %>
     <div class="col-6 offset-3 mb-5">
@@ -70,7 +76,7 @@
     </div>
   <% } %>
 
-  <!-- Display All Reviews -->
+
 <div class="col-6 offset-3 mb-5">
   <h3 class="mb-4">What people are saying</h3>
 
@@ -113,21 +119,22 @@
   <% } %>
 </div>
 
+
 </div>
 
 
 
 
-<!-- Mapbox GL CSS & JS (CDN) -->
+
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 
-<!-- Your map.js file -->
+
 <script src="/js/map.js"></script>
 
 
 
-<!-- Star Rating Styling -->
+
 <style>
   .rating-stars {
     direction: rtl;
