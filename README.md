@@ -1,6 +1,8 @@
 # 🏡 Major Project - Dynamic Listings Web App  
 **Deployed on Render | Built with Node.js, Express & MongoDB**
 
+[![Deployed on Render](https://img.shields.io/badge/Live-Demo-brightgreen)](https://majorproject-lg4r.onrender.com/)
+
 ---
 
 ## 🧭 Overview
@@ -102,8 +104,6 @@ majorproject/
 ```
 
 ## 📸 Screenshots
-```
-
 ![image](https://github.com/user-attachments/assets/ed89bdd0-18a4-406b-93d6-ae6f4b0c73ce)
 
 ![image](https://github.com/user-attachments/assets/bac4da85-31d5-4317-9d2e-acd40cb80875)
@@ -112,7 +112,6 @@ majorproject/
 
 ![image](https://github.com/user-attachments/assets/fb8d9330-76b6-41b8-9b67-25710508775c)
 
-```
 ---
 
 ## 🙋‍♂️ Author
