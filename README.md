@@ -117,8 +117,8 @@ majorproject/
 ## 🙋‍♂️ Author
 Rakesh Kumar Mishra
 📧 mishrarakeshkumar766@gmail.com
-🔗 GitHub
-🔗 LinkedIn
+🔗 [GitHub](https://github.com/mishrarakesh-1902/majorproject)
+🔗 [LinkedIn](https://www.linkedin.com/in/rakesh-kumar-b64934284/)
 
 ### ✅ How to Use:
 - Save this as `README.md` in your GitHub repo root.
